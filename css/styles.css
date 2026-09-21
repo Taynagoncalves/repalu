@@ -103,6 +103,8 @@ p.sem-limite { max-width: none; }
   display: inline-block;
   margin-bottom: var(--espaco-2);
 }
+/* Variante para usar sobre fundos escuros (seções --petroleo) */
+.olho--claro { color: #5EEAD4; }
 
 /* Foco visível acessível */
 a:focus-visible,
@@ -174,9 +176,11 @@ textarea:focus-visible,
 .botao--primario {
   background: var(--cor-coral);
   color: var(--cor-branco);
-  box-shadow: 0 14px 28px -12px rgba(228, 99, 59, 0.55);
 }
-.botao--primario:hover { background: var(--cor-coral-600); }
+.botao--primario:hover {
+  background: var(--cor-coral-600);
+  box-shadow: 0 10px 20px -10px rgba(14, 148, 136, 0.45);
+}
 .botao--secundario {
   background: transparent;
   border-color: var(--cor-petroleo);
@@ -225,16 +229,19 @@ textarea:focus-visible,
   font-size: 1.35rem;
   color: var(--cor-petroleo);
 }
-.marca svg { width: 34px; height: 34px; }
+.marca__logo { height: 34px; width: auto; display: block; }
+.painel-mobile__logo { height: 28px; width: auto; display: block; filter: brightness(0) invert(1); }
+.rodape__marca-logo { height: 30px; width: auto; display: block; filter: brightness(0) invert(1); }
 
 .nav-principal { display: none; }
-.nav-principal ul { display: flex; align-items: center; gap: var(--espaco-4); }
+.nav-principal ul { display: flex; align-items: center; gap: 1.35rem; }
 .nav-principal a {
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--cor-grafite);
   position: relative;
   padding-block: 0.3rem;
+  white-space: nowrap;
 }
 .nav-principal a::after {
   content: "";
@@ -251,11 +258,12 @@ textarea:focus-visible,
 .nav-principal a[aria-current="page"] { color: var(--cor-petroleo); font-weight: 700; }
 
 .acoes-cabecalho { display: flex; align-items: center; gap: var(--espaco-2); }
+/* O botão secundário "Fale Conosco" do cabeçalho é redundante quando o menu
+   completo já mostra esse link — some no desktop pra dar espaço ao menu. */
 .acoes-cabecalho .botao--secundario { display: none; }
 
-@media (min-width: 1080px) {
+@media (min-width: 1240px) {
   .nav-principal { display: block; }
-  .acoes-cabecalho .botao--secundario { display: inline-flex; }
   .botao-menu-mobile { display: none; }
 }
 
@@ -338,7 +346,22 @@ body[data-menu-aberto="true"] { overflow: hidden; }
   margin-block: var(--espaco-2) var(--espaco-3);
 }
 .hero__acoes { display: flex; flex-wrap: wrap; gap: var(--espaco-2); margin-top: var(--espaco-4); }
-.hero__nota-legal { margin-top: var(--espaco-4); font-size: 0.82rem; color: var(--cor-grafite-suave); }
+.hero__selos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-3);
+  margin-top: var(--espaco-4);
+}
+.hero__selos li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cor-petroleo);
+}
+.hero__selos li svg { width: 18px; height: 18px; color: var(--cor-coral); flex-shrink: 0; }
+.hero__nota-legal { margin-top: var(--espaco-3); font-size: 0.82rem; color: var(--cor-grafite-suave); }
 
 .palco-cartoes {
   position: relative;
@@ -404,35 +427,12 @@ body[data-menu-aberto="true"] { overflow: hidden; }
   gap: 1rem;
   width: 100%;
 }
-.cartao__logo {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-.cartao__logo-texto {
-  position: relative;
-  font-family: var(--fonte-titulo);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 4vw, 1.9rem);
-}
-.cartao__logo-texto::after {
-  content: "";
-  position: absolute;
-  top: -0.14em;
-  left: 57%;
-  width: 0.1em;
-  height: 0.1em;
-  border-radius: 50%;
-  background: currentColor;
-}
-.cartao__logo-card {
-  align-self: flex-end;
-  margin-top: 0.15rem;
-  font-family: var(--fonte-corpo);
-  font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-  opacity: 0.9;
+.cartao__logo-img {
+  height: 30px;
+  width: auto;
+  /* logo original é colorida (teal + azul-marinho); em branco fica legível
+     nos dois fundos de gradiente do cartão (teal e azul-marinho) */
+  filter: brightness(0) invert(1);
 }
 .cartao__chip {
   flex-shrink: 0;
@@ -467,6 +467,12 @@ body[data-menu-aberto="true"] { overflow: hidden; }
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio);
   padding: var(--espaco-3);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.lista-passos__item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-suave);
+  border-color: transparent;
 }
 .lista-passos__numero {
   font-family: var(--fonte-titulo);
@@ -495,6 +501,12 @@ body[data-menu-aberto="true"] { overflow: hidden; }
   display: flex;
   flex-direction: column;
   gap: var(--espaco-2);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.carta:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-suave);
+  border-color: transparent;
 }
 .carta--destino-pf { background: var(--cor-petroleo); color: var(--cor-branco); border: none; }
 .carta--destino-pf h3 { color: var(--cor-branco); }
@@ -578,60 +590,80 @@ body[data-menu-aberto="true"] { overflow: hidden; }
   color: var(--cor-grafite-suave);
 }
 
-/* ---------- Simulador (Para Você) ---------- */
-.simulador {
-  background: var(--cor-petroleo);
+/* ---------- Tabela de economia mensal (Para Você) ---------- */
+.tabela-economia {
+  display: grid;
+  gap: var(--espaco-3);
+  align-items: stretch;
+}
+@media (min-width: 900px) {
+  .tabela-economia { grid-template-columns: 0.85fr 1.7fr; }
+}
+.tabela-economia__intro {
+  background: var(--cor-coral);
   color: var(--cor-branco);
   border-radius: var(--raio);
   padding: var(--espaco-4);
-  max-width: 26rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.simulador__rotulo { font-size: 0.85rem; opacity: 0.8; }
-.simulador__valor {
-  font-family: var(--fonte-titulo);
-  font-size: 2.6rem;
-  color: #5EEAD4;
-  font-weight: 700;
-  margin-block: 0.3rem 0.8rem;
-}
-.simulador__nota { font-size: 0.78rem; opacity: 0.75; }
-
-/* ---------- Comparativo de preço (Para Você) ---------- */
-.comparativo-preco {
-  max-width: 26rem;
-  background: var(--cor-menta);
-  border-radius: var(--raio);
-  padding: var(--espaco-3);
-}
-.comparativo-preco__linha { display: grid; grid-template-columns: 1fr 1fr; gap: var(--espaco-2); }
-.comparativo-preco__item {
+.tabela-economia__intro h2 { color: var(--cor-branco); margin-bottom: var(--espaco-2); }
+.tabela-economia__intro p { color: #e3fbf6; }
+.tabela-economia__card {
   background: var(--cor-branco);
-  border-radius: var(--raio-pequeno);
-  padding: var(--espaco-3);
-  text-align: center;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco-4);
   box-shadow: var(--sombra-suave);
+  overflow-x: auto;
 }
-.comparativo-preco__rotulo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.85rem;
+.tabela-economia__tabela { width: 100%; min-width: 540px; border-collapse: collapse; }
+.tabela-economia__tabela th {
+  text-align: right;
   font-weight: 600;
-  margin-bottom: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--cor-grafite-suave);
+  padding-bottom: 0.9rem;
 }
-.comparativo-preco__item--normal .comparativo-preco__rotulo { color: var(--cor-erro); }
-.comparativo-preco__item--repalu .comparativo-preco__rotulo { color: var(--cor-coral-600); }
-.comparativo-preco__valor { font-family: var(--fonte-titulo); font-size: 1.6rem; font-weight: 700; color: var(--cor-petroleo); }
-.comparativo-preco__item--normal .comparativo-preco__valor { color: var(--cor-grafite-suave); text-decoration: line-through; text-decoration-color: var(--cor-erro); }
-.comparativo-preco__economia {
-  margin-top: var(--espaco-2);
+.tabela-economia__tabela th:first-child { text-align: left; }
+.tabela-economia__tabela td {
+  padding: 0.9rem 0.4rem;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 0.92rem;
+  text-align: right;
+  white-space: nowrap;
+}
+.tabela-economia__tabela td:first-child { text-align: left; white-space: normal; }
+.tabela-economia__data { color: var(--cor-grafite-suave); }
+.tabela-economia__servico { color: var(--cor-coral-600); font-weight: 700; }
+.tabela-economia__normal { color: var(--cor-grafite-suave); }
+.tabela-economia__repalu { color: var(--cor-coral-600); font-weight: 700; }
+.tabela-economia__desconto {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--cor-coral-600);
+  border: 1px solid var(--cor-coral);
+  border-radius: 999px;
+  padding: 0.05rem 0.5rem;
+}
+.tabela-economia__total td {
+  font-weight: 700;
+  color: var(--cor-petroleo);
+  border-top: 2px solid var(--cor-petroleo);
+}
+.tabela-economia__banner {
+  margin-top: var(--espaco-3);
   background: var(--cor-coral);
   color: var(--cor-branco);
   text-align: center;
   font-weight: 700;
-  padding: 0.8rem 1rem;
+  padding: 0.9rem;
   border-radius: 999px;
 }
+.tabela-economia__nota { margin-top: var(--espaco-2); font-size: 0.78rem; color: var(--cor-grafite-suave); }
 
 /* ---------- Banner de passos (título em destaque) ---------- */
 .banner-passos {
@@ -660,6 +692,12 @@ body[data-menu-aberto="true"] { overflow: hidden; }
   border: 1px solid var(--cor-borda);
   border-radius: var(--raio);
   padding: var(--espaco-4);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.categoria-rede:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-suave);
+  border-color: transparent;
 }
 .categoria-rede ul { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: var(--espaco-2); }
 .categoria-rede li {
