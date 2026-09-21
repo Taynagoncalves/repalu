@@ -229,8 +229,8 @@ textarea:focus-visible,
   font-size: 1.35rem;
   color: var(--cor-petroleo);
 }
-.marca__logo { height: 34px; width: auto; display: block; }
-.painel-mobile__logo { height: 28px; width: auto; display: block; filter: brightness(0) invert(1); }
+.marca__logo { height: 44px; width: auto; display: block; }
+.painel-mobile__logo { height: 32px; width: auto; display: block; filter: brightness(0) invert(1); }
 .rodape__marca-logo { height: 30px; width: auto; display: block; filter: brightness(0) invert(1); }
 
 .nav-principal { display: none; }
@@ -385,20 +385,14 @@ body[data-menu-aberto="true"] { overflow: hidden; }
 }
 .palco-cartoes__cartao--pf {
   background: linear-gradient(135deg, #1fd2b8 0%, #14B8A6 55%, #0b7d70 100%);
-  left: 2%;
-  top: 10%;
-  z-index: 3;
+  left: 0;
+  top: 0;
+  z-index: 2;
 }
 .palco-cartoes__cartao--pj {
   background: linear-gradient(135deg, #34419e 0%, #1E2A6E 55%, #121b4a 100%);
-  right: 0;
-  top: 26%;
-  z-index: 2;
-}
-.palco-cartoes__cartao--pf-2 {
-  background: linear-gradient(135deg, #17c9b0 0%, #0E9488 60%, #075f56 100%);
-  left: 18%;
-  top: 44%;
+  left: 16%;
+  top: 46%;
   z-index: 1;
 }
 /* Textura de círculos sobrepostos, como no cartão físico de referência */
