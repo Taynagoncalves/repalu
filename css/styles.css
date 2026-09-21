@@ -1,24 +1,25 @@
 /* =========================================================================
    REPALU — Design System
-   Paleta: verde-petróleo (marca / pessoa física), coral (conversão / empresa)
+   Paleta: turquesa (marca / CTA / destaque) + azul-marinho (texto, links,
+   seções escuras) sobre fundo branco — replica a paleta oficial da marca.
    Tipografia: Fraunces (títulos, serifada, peso variável) + Public Sans (corpo)
    ========================================================================= */
 
 :root {
   /* Cores de marca */
-  --cor-petroleo: #0E3B36;
-  --cor-petroleo-600: #124b44;
-  --cor-menta: #EAF5EF;
-  --cor-menta-escuro: #d3ebe0;
-  --cor-branco: #FCFDFC;
-  --cor-coral: #E4633B;
-  --cor-coral-600: #c94f2b;
-  --cor-coral-tint: #FBEAE3;
-  --cor-grafite: #1B2320;
-  --cor-grafite-suave: #4b5450;
-  --cor-borda: #dde5e1;
+  --cor-petroleo: #1E2A6E;       /* azul-marinho — texto de marca, headings, seções escuras */
+  --cor-petroleo-600: #16205a;
+  --cor-menta: #E7FBF7;          /* tint claro de turquesa — fundo de seções alternadas */
+  --cor-menta-escuro: #cdf3ea;
+  --cor-branco: #FFFFFF;
+  --cor-coral: #14B8A6;          /* turquesa — cor de marca / CTA */
+  --cor-coral-600: #0E9488;
+  --cor-coral-tint: #DFF8F3;
+  --cor-grafite: #1B2333;
+  --cor-grafite-suave: #626C82;
+  --cor-borda: #e1e5f0;
   --cor-erro: #b3261e;
-  --cor-sucesso: #1e7a4c;
+  --cor-sucesso: #0E9488;
 
   /* Tipografia */
   --fonte-titulo: "Fraunces", "Source Serif 4", Georgia, serif;
@@ -38,8 +39,8 @@
   --largura-leitura: 62ch;
   --raio: 18px;
   --raio-pequeno: 10px;
-  --sombra-suave: 0 12px 32px -16px rgba(27, 35, 32, 0.28);
-  --sombra-cartao: 0 30px 60px -20px rgba(14, 59, 54, 0.45);
+  --sombra-suave: 0 12px 32px -16px rgba(27, 35, 51, 0.28);
+  --sombra-cartao: 0 30px 60px -20px rgba(20, 184, 166, 0.4);
 
   --altura-header: 76px;
 }
@@ -60,7 +61,7 @@ html { scroll-behavior: smooth; }
 body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, ul, ol {
   margin: 0;
 }
-ul[class], ol[class] { list-style: none; padding: 0; }
+ul, ol { list-style: none; padding: 0; }
 img, picture, svg { max-width: 100%; display: block; }
 input, button, textarea, select { font: inherit; color: inherit; }
 button { cursor: pointer; }
@@ -346,14 +347,13 @@ body[data-menu-aberto="true"] { overflow: hidden; }
 }
 .palco-cartoes__cartao {
   position: absolute;
-  width: min(320px, 78vw);
+  width: min(340px, 80vw);
   aspect-ratio: 1.586 / 1;
   border-radius: 20px;
-  padding: 1.5rem;
+  padding: 1.5rem 1.6rem;
   color: var(--cor-branco);
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
   box-shadow: var(--sombra-cartao);
   transform-style: preserve-3d;
   will-change: transform;
@@ -361,22 +361,33 @@ body[data-menu-aberto="true"] { overflow: hidden; }
   overflow: hidden;
 }
 .palco-cartoes__cartao--pf {
-  background: linear-gradient(135deg, #12564d 0%, #0E3B36 55%, #082521 100%);
+  background: linear-gradient(135deg, #1fd2b8 0%, #14B8A6 55%, #0b7d70 100%);
   left: 2%;
   top: 10%;
   z-index: 3;
 }
 .palco-cartoes__cartao--pj {
-  background: linear-gradient(135deg, #ef7a52 0%, #E4633B 55%, #b8451f 100%);
+  background: linear-gradient(135deg, #34419e 0%, #1E2A6E 55%, #121b4a 100%);
   right: 0;
   top: 26%;
   z-index: 2;
 }
 .palco-cartoes__cartao--pf-2 {
-  background: linear-gradient(135deg, #1c655a 0%, #124b44 60%, #0a2f2a 100%);
+  background: linear-gradient(135deg, #17c9b0 0%, #0E9488 60%, #075f56 100%);
   left: 18%;
   top: 44%;
   z-index: 1;
+}
+/* Textura de círculos sobrepostos, como no cartão físico de referência */
+.cartao__textura {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 78% 10%, rgba(255,255,255,0.20) 0, rgba(255,255,255,0.20) 30%, transparent 31%),
+    radial-gradient(circle at 96% 55%, rgba(255,255,255,0.14) 0, rgba(255,255,255,0.14) 26%, transparent 27%),
+    radial-gradient(circle at 55% 90%, rgba(255,255,255,0.12) 0, rgba(255,255,255,0.12) 34%, transparent 35%),
+    radial-gradient(circle at 10% 30%, rgba(255,255,255,0.10) 0, rgba(255,255,255,0.10) 22%, transparent 23%);
 }
 .cartao__brilho {
   position: absolute;
@@ -385,15 +396,51 @@ body[data-menu-aberto="true"] { overflow: hidden; }
   transform: translateX(-120%);
   pointer-events: none;
 }
-.cartao__topo { display: flex; justify-content: space-between; align-items: flex-start; }
-.cartao__logo { display: flex; align-items: center; gap: 0.4rem; font-family: var(--fonte-titulo); font-weight: 700; font-size: 1.05rem; }
-.cartao__logo svg { width: 22px; height: 22px; }
-.cartao__tipo { font-size: 0.65rem; letter-spacing: 0.08em; opacity: 0.85; text-transform: uppercase; }
+.cartao__conteudo {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+.cartao__logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.cartao__logo-texto {
+  position: relative;
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
+}
+.cartao__logo-texto::after {
+  content: "";
+  position: absolute;
+  top: -0.14em;
+  left: 57%;
+  width: 0.1em;
+  height: 0.1em;
+  border-radius: 50%;
+  background: currentColor;
+}
+.cartao__logo-card {
+  align-self: flex-end;
+  margin-top: 0.15rem;
+  font-family: var(--fonte-corpo);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  opacity: 0.9;
+}
 .cartao__chip {
-  width: 38px; height: 28px;
-  border-radius: 6px;
+  flex-shrink: 0;
+  width: 46px; height: 34px;
+  border-radius: 7px;
   background: linear-gradient(140deg, #f4e6b8, #d9b968);
   position: relative;
+  z-index: 1;
 }
 .cartao__chip::before, .cartao__chip::after {
   content: "";
@@ -402,10 +449,6 @@ body[data-menu-aberto="true"] { overflow: hidden; }
 }
 .cartao__chip::before { top: 50%; left: 0; right: 0; height: 1px; }
 .cartao__chip::after { left: 50%; top: 0; bottom: 0; width: 1px; }
-.cartao__numero { font-family: var(--fonte-corpo); letter-spacing: 0.12em; font-size: 1.05rem; margin-top: 0.9rem; }
-.cartao__rodape { display: flex; justify-content: space-between; align-items: flex-end; font-size: 0.72rem; }
-.cartao__nome { text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
-.cartao__validade { opacity: 0.85; }
 
 @media (prefers-reduced-motion: reduce) {
   .palco-cartoes__cartao { opacity: 1 !important; transform: none !important; }
@@ -469,6 +512,53 @@ body[data-menu-aberto="true"] { overflow: hidden; }
 }
 .carta__icone svg { width: 24px; height: 24px; }
 
+/* ---------- Faixa de parceiros/clientes ---------- */
+.secao-parceiros {
+  padding-block: var(--espaco-4);
+  background: var(--cor-branco);
+  border-block: 1px solid var(--cor-borda);
+}
+.secao-parceiros__rotulo {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--cor-grafite-suave);
+  margin-bottom: var(--espaco-3);
+}
+.marquee-parceiros {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-parceiros__trilho {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-6);
+  width: max-content;
+  animation: rolar-parceiros 32s linear infinite;
+}
+.marquee-parceiros__item {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--cor-grafite-suave);
+  opacity: 0.55;
+  white-space: nowrap;
+}
+@keyframes rolar-parceiros {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-parceiros__trilho {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+  }
+}
+
 /* ---------- Depoimento ---------- */
 .depoimento {
   border-left: 4px solid var(--cor-coral);
@@ -500,11 +590,69 @@ body[data-menu-aberto="true"] { overflow: hidden; }
 .simulador__valor {
   font-family: var(--fonte-titulo);
   font-size: 2.6rem;
-  color: #9fe6c9;
+  color: #5EEAD4;
   font-weight: 700;
   margin-block: 0.3rem 0.8rem;
 }
 .simulador__nota { font-size: 0.78rem; opacity: 0.75; }
+
+/* ---------- Comparativo de preço (Para Você) ---------- */
+.comparativo-preco {
+  max-width: 26rem;
+  background: var(--cor-menta);
+  border-radius: var(--raio);
+  padding: var(--espaco-3);
+}
+.comparativo-preco__linha { display: grid; grid-template-columns: 1fr 1fr; gap: var(--espaco-2); }
+.comparativo-preco__item {
+  background: var(--cor-branco);
+  border-radius: var(--raio-pequeno);
+  padding: var(--espaco-3);
+  text-align: center;
+  box-shadow: var(--sombra-suave);
+}
+.comparativo-preco__rotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.comparativo-preco__item--normal .comparativo-preco__rotulo { color: var(--cor-erro); }
+.comparativo-preco__item--repalu .comparativo-preco__rotulo { color: var(--cor-coral-600); }
+.comparativo-preco__valor { font-family: var(--fonte-titulo); font-size: 1.6rem; font-weight: 700; color: var(--cor-petroleo); }
+.comparativo-preco__item--normal .comparativo-preco__valor { color: var(--cor-grafite-suave); text-decoration: line-through; text-decoration-color: var(--cor-erro); }
+.comparativo-preco__economia {
+  margin-top: var(--espaco-2);
+  background: var(--cor-coral);
+  color: var(--cor-branco);
+  text-align: center;
+  font-weight: 700;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+}
+
+/* ---------- Banner de passos (título em destaque) ---------- */
+.banner-passos {
+  background: var(--cor-petroleo);
+  color: var(--cor-branco);
+  border-radius: var(--raio);
+  padding: var(--espaco-3) var(--espaco-4);
+  margin-bottom: var(--espaco-4);
+}
+.banner-passos h2 { color: var(--cor-branco); margin: 0; }
+
+/* ---------- Banner final em degradê ---------- */
+.banner-gradiente {
+  background: linear-gradient(135deg, var(--cor-coral) 0%, var(--cor-petroleo) 100%);
+  border-radius: 28px;
+  padding: var(--espaco-6) var(--espaco-4);
+  text-align: center;
+  color: var(--cor-branco);
+}
+.banner-gradiente h2 { color: var(--cor-branco); }
+.banner-gradiente p { color: #dce6fb; margin-inline: auto; }
 
 /* ---------- Categorias de rede ---------- */
 .categoria-rede {

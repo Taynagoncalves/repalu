@@ -18,7 +18,7 @@
 <header class="cabecalho">
   <div class="container">
     <a href="index.html" class="marca">
-      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#0E3B36"/><path d="M11 21c0-5 4-9 9-9s9 4 9 9-4 9-9 9c-2 0-3.8-.6-5.3-1.7" stroke="#EAF5EF" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="21" r="3" fill="#E4633B"/></svg>
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#1E2A6E"/><path d="M11 21c0-5 4-9 9-9s9 4 9 9-4 9-9 9c-2 0-3.8-.6-5.3-1.7" stroke="#E7FBF7" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="21" r="3" fill="#14B8A6"/></svg>
       Repalu
     </a>
 
@@ -39,7 +39,7 @@
       <a href="paginas/fale-conosco.html" class="botao botao--secundario">Fale Conosco</a>
       <button type="button" class="botao botao--primario" data-abrir-cadastro>Adquirir cartão</button>
       <button type="button" class="botao-menu-mobile" data-abrir-menu aria-expanded="false" aria-controls="painel-mobile">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="#0E3B36" stroke-width="2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="#1E2A6E" stroke-width="2" stroke-linecap="round"/></svg>
         <span class="visualmente-oculto">Abrir menu</span>
       </button>
     </div>
@@ -90,42 +90,64 @@
 
       <div class="palco-cartoes" aria-hidden="true">
         <article class="palco-cartoes__cartao palco-cartoes__cartao--pf-2">
+          <div class="cartao__textura"></div>
           <div class="cartao__brilho"></div>
-          <div class="cartao__topo">
-            <div class="cartao__logo"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.6"/></svg>Repalu</div>
-            <span class="cartao__tipo">Empresa</span>
+          <div class="cartao__conteudo">
+            <div class="cartao__chip"></div>
+            <div class="cartao__logo">
+              <span class="cartao__logo-texto">Repalu</span>
+              <span class="cartao__logo-card">CARD</span>
+            </div>
           </div>
-          <div class="cartao__chip"></div>
-          <div class="cartao__rodape"><span class="cartao__nome">Equipe</span></div>
         </article>
 
         <article class="palco-cartoes__cartao palco-cartoes__cartao--pj">
+          <div class="cartao__textura"></div>
           <div class="cartao__brilho"></div>
-          <div class="cartao__topo">
-            <div class="cartao__logo"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.6"/></svg>Repalu</div>
-            <span class="cartao__tipo">Empresa</span>
-          </div>
-          <div class="cartao__chip"></div>
-          <div class="cartao__numero">•••• •••• •••• 4471</div>
-          <div class="cartao__rodape">
-            <span class="cartao__nome">Sua Empresa Aqui</span>
-            <span class="cartao__validade">12/30</span>
+          <div class="cartao__conteudo">
+            <div class="cartao__chip"></div>
+            <div class="cartao__logo">
+              <span class="cartao__logo-texto">Repalu</span>
+              <span class="cartao__logo-card">CARD</span>
+            </div>
           </div>
         </article>
 
         <article class="palco-cartoes__cartao palco-cartoes__cartao--pf">
+          <div class="cartao__textura"></div>
           <div class="cartao__brilho"></div>
-          <div class="cartao__topo">
-            <div class="cartao__logo"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#fff" stroke-width="1.6"/></svg>Repalu</div>
-            <span class="cartao__tipo">Pessoa Física</span>
-          </div>
-          <div class="cartao__chip"></div>
-          <div class="cartao__numero">•••• •••• •••• 0192</div>
-          <div class="cartao__rodape">
-            <span class="cartao__nome">Seu Nome Aqui</span>
-            <span class="cartao__validade">09/31</span>
+          <div class="cartao__conteudo">
+            <div class="cartao__chip"></div>
+            <div class="cartao__logo">
+              <span class="cartao__logo-texto">Repalu</span>
+              <span class="cartao__logo-card">CARD</span>
+            </div>
           </div>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= PARCEIROS/CLIENTES ======================= -->
+  <section class="secao-parceiros">
+    <div class="container">
+      <p class="secao-parceiros__rotulo">Empresas que confiam na Repalu</p>
+      <div class="marquee-parceiros">
+        <div class="marquee-parceiros__trilho">
+          <span class="marquee-parceiros__item">Mondelēz International</span>
+          <span class="marquee-parceiros__item">Nestlé</span>
+          <span class="marquee-parceiros__item">Grupo Petrópolis</span>
+          <span class="marquee-parceiros__item">Unilever</span>
+          <span class="marquee-parceiros__item">Haskell</span>
+          <span class="marquee-parceiros__item">Coca-Cola</span>
+          <!-- lista repetida para o loop de rolagem ficar contínuo -->
+          <span class="marquee-parceiros__item" aria-hidden="true">Mondelēz International</span>
+          <span class="marquee-parceiros__item" aria-hidden="true">Nestlé</span>
+          <span class="marquee-parceiros__item" aria-hidden="true">Grupo Petrópolis</span>
+          <span class="marquee-parceiros__item" aria-hidden="true">Unilever</span>
+          <span class="marquee-parceiros__item" aria-hidden="true">Haskell</span>
+          <span class="marquee-parceiros__item" aria-hidden="true">Coca-Cola</span>
+        </div>
       </div>
     </div>
   </section>
@@ -186,7 +208,7 @@
   <section class="secao secao--petroleo">
     <div class="container grade-assimetrica">
       <div>
-        <span class="olho" style="color:#9fe6c9">REDE CREDENCIADA</span>
+        <span class="olho" style="color:#5EEAD4">REDE CREDENCIADA</span>
         <h2>Atendimento Perto de Você</h2>
         <p>Com uma ampla rede de clínicas, hospitais e laboratórios credenciados, o Cartão Repalu leva o cuidado com a saúde a qualquer lugar que você esteja.</p>
         <a href="paginas/rede-de-servico.html" class="botao botao--primario" style="margin-top: var(--espaco-3);">Explore nossa Rede de Serviços</a>
@@ -199,11 +221,13 @@
   </section>
 
   <!-- ======================= FECHAMENTO ======================= -->
-  <section class="secao secao--coral-tint centralizado">
-    <div class="container" style="max-width: 42rem;">
-      <h2>Cuidar da sua saúde com economia é possível!</h2>
-      <button type="button" class="botao botao--primario" data-abrir-cadastro style="margin-top: var(--espaco-3);">Fazer meu cadastro</button>
-      <p style="margin-top: var(--espaco-3); margin-inline:auto;">Não é um plano de saúde. Descontos variam conforme parceiro e região.</p>
+  <section class="secao">
+    <div class="container">
+      <div class="banner-gradiente">
+        <h2>Cuidar da sua saúde com economia é possível!</h2>
+        <button type="button" class="botao botao--sobre-escuro" data-abrir-cadastro style="margin-top: var(--espaco-3);">Fazer meu cadastro</button>
+        <p style="margin-top: var(--espaco-3); margin-inline:auto;">Não é um plano de saúde. Descontos variam conforme parceiro e região.</p>
+      </div>
     </div>
   </section>
 </main>
@@ -214,7 +238,7 @@
     <div class="rodape__grade">
       <div>
         <div class="rodape__marca">
-          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#EAF5EF"/><path d="M11 21c0-5 4-9 9-9s9 4 9 9-4 9-9 9c-2 0-3.8-.6-5.3-1.7" stroke="#0E3B36" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="21" r="3" fill="#E4633B"/></svg>
+          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#E7FBF7"/><path d="M11 21c0-5 4-9 9-9s9 4 9 9-4 9-9 9c-2 0-3.8-.6-5.3-1.7" stroke="#1E2A6E" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="21" r="3" fill="#14B8A6"/></svg>
           Repalu
         </div>
         <p style="color:#a9c4bc; max-width: 30ch;">Cartão de acesso à saúde com desconto. Sem carência, sem fidelidade, 100% digital.</p>
@@ -263,7 +287,7 @@
 <div class="modal-fundo" data-modal-cadastro role="dialog" aria-modal="true" aria-labelledby="titulo-modal-cadastro">
   <div class="modal-caixa">
     <button type="button" class="modal-fechar" data-fechar-modal aria-label="Fechar formulário de cadastro">
-      <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M6 6l12 12M18 6L6 18" stroke="#0E3B36" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M6 6l12 12M18 6L6 18" stroke="#1E2A6E" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
     <div class="form-cadastro">
       <h2 id="titulo-modal-cadastro" style="font-size:1.6rem; margin-bottom: 0.3rem;">Faça seu cadastro</h2>
